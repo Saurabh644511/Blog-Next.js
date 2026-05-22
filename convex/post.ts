@@ -28,7 +28,7 @@ export const createPost = mutation({
 export const getPosts = query({
   args: {},
   handler: async (ctx) => {
-    const posts = await ctx.db.query("posts").order("desc").collect();
+    const posts = (await ctx.db.query("posts").collect()).reverse();
     return await Promise.all(
       posts.map(async (post) => {
         const resolvedImageUrl =
