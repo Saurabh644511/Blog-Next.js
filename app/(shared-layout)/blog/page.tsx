@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Metadata } from "next";
-import { cacheLife, cacheTag } from "next/cache";
+import { connection } from "next/server";
 
 
 export const metadata : Metadata = {
@@ -37,9 +37,8 @@ export default function BlogPage() {
 }
 
 async function LoadBlogList() {
-  "use cache";
-  cacheLife("hours")
-  cacheTag("blog")
+  
+  await connection()
 
   const data = await fetchQuery(api.post.getPosts);
 
