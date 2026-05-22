@@ -7,7 +7,6 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Metadata } from "next";
-import { connection } from "next/server";
 import { cacheLife, cacheTag } from "next/cache";
 
 

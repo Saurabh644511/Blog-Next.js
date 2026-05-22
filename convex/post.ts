@@ -4,7 +4,7 @@ import { authComponent } from "./auth";
 import { Doc } from "./_generated/dataModel";
 
 // Create a new task with the given text
-const createPost = mutation({
+export const createPost = mutation({
   args: {
     title: v.string(),
     body: v.string(),
@@ -25,7 +25,7 @@ const createPost = mutation({
   },
 });
 
-const getPosts = query({
+export const getPosts = query({
   args: {},
   handler: async (ctx) => {
     const posts = await ctx.db.query("posts").order("desc").collect();
@@ -45,7 +45,7 @@ const getPosts = query({
   },
 });
 
-const generateImageUploadUrl = mutation({
+export const generateImageUploadUrl = mutation({
   args: {},
   handler: async (ctx) => {
     const user = await authComponent.safeGetAuthUser(ctx);
@@ -55,7 +55,8 @@ const generateImageUploadUrl = mutation({
     return await ctx.storage.generateUploadUrl();
   },
 });
-const getPostById = query({
+
+export const getPostById = query({
   args: {
     postId: v.id("posts"),
   },
@@ -83,7 +84,7 @@ interface searchResultTypes {
   body: string;
 }
 
-const searchPosts = query({
+export const searchPosts = query({
   args: {
     term: v.string(),
     limit: v.number(),
@@ -129,10 +130,3 @@ const searchPosts = query({
   },
 });
 
-export {
-  createPost,
-  getPosts,
-  generateImageUploadUrl,
-  getPostById,
-  searchPosts,
-};
