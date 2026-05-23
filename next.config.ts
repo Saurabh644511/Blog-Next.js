@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
         port: "",
       },
       {
-        hostname: "careful-ladybug-821.convex.cloud",
+        hostname: "savory-wren-708.convex.cloud",
         protocol: "https",
         port: "",
       },
