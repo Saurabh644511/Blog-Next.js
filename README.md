@@ -15,6 +15,19 @@ pnpm dev
 bun dev
 ```
 
+# NextPro Blog Platform
+
+A modern full-stack blogging platform built with:
+
+- Next.js 16
+- Convex
+- Better Auth
+- Tailwind CSS
+
+## Live Demo
+
+https://blog-next-js-9gu3.vercel.app
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
