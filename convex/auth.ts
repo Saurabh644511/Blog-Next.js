@@ -6,7 +6,7 @@ import { query } from "./_generated/server";
 import { betterAuth } from "better-auth";
 import authConfig from "./auth.config";
 
-// const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 // The component client has methods needed for integrating Convex with Better Auth,
 // as well as helper methods for general use.
@@ -15,8 +15,12 @@ export const authComponent = createClient<DataModel>(components.betterAuth);
 export const createAuth = (ctx: GenericCtx<DataModel>) => {
   return betterAuth({
     secret: process.env.BETTER_AUTH_SECRET,
-    baseURL: "http://localhost:3000",
+    baseURL: siteUrl,
     database: authComponent.adapter(ctx),
+    trustedOrigins: [
+      "http://localhost:3000",
+      "https://blog-next-js-9gu3.vercel.app",
+    ],
     // Configure simple, non-verified email/password to get started
     emailAndPassword: {
       enabled: true,
